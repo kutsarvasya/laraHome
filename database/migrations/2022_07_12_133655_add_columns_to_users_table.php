@@ -14,7 +14,10 @@ class AddColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->integer('status')->default(1);
+            $table->integer('mobile')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
         });
     }
 
@@ -26,7 +29,10 @@ class AddColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('status');
+            $table->dropColumn('mobile');
+            $table->dropColumn('first_name');
+            $table->dropColumn('last_name');
         });
     }
 }
